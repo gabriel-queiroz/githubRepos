@@ -54,6 +54,8 @@ export const RepoDetailsListScroll = styled.ScrollView`
 export const RepoDetailsListItem =  styled.View`
     padding: 10px 5px;
     flex:1;
+    flex-direction: row;
+    justify-content: space-between;
     background-color:#fff;
     border-bottom-width: 2px;
     border-color:#ccc;

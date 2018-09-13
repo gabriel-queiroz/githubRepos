@@ -23,7 +23,7 @@ export default class RepoDetails extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const { id, stars, title, avatar, author, forks, lastCommit, issues } = this.props.navigation.state.params;
     const repo = {
       id, stars, title, avatar, author, forks, lastCommit, issues
@@ -35,37 +35,48 @@ export default class RepoDetails extends Component {
   render() {
 
 
-    const { id, stars, title, avatar, author, forks, lastCommit, issues  } = this.state.repo;
+    const { id, stars, title, avatar, author, forks, lastCommit, issues } = this.state.repo;
 
     return (
       <RepoDetailsContainer>
         <StatusBar />
+
         <RepoDetailsHeader>
           <RepoDetailsImage source={{ uri: avatar }} />
-          <RepoDetailsTitle>{ title }</RepoDetailsTitle>
-          <RepoDetailsAuthor>{ author }</RepoDetailsAuthor>
+          <RepoDetailsTitle>{title}</RepoDetailsTitle>
+          <RepoDetailsAuthor>{author}</RepoDetailsAuthor>
         </RepoDetailsHeader>
+
         <RepoDetailsContent>
+
           <RepoDetailsListScroll>
-          <RepoDetailsListItem>
+            
+            <RepoDetailsListItem>
               <RepoDetailsLabel>Stars: </RepoDetailsLabel>
-              <RepoDetailValue>{ stars }</RepoDetailValue>
+              <RepoDetailValue>{stars}</RepoDetailValue>
             </RepoDetailsListItem>
+            
             <RepoDetailsListItem>
               <RepoDetailsLabel>Forks: </RepoDetailsLabel>
-              <RepoDetailValue>{ forks }</RepoDetailValue>
+              <RepoDetailValue>{forks}</RepoDetailValue>
             </RepoDetailsListItem>
+            
             <RepoDetailsListItem>
               <RepoDetailsLabel>Issues: </RepoDetailsLabel>
-              <RepoDetailValue>{ issues }</RepoDetailValue>
+              <RepoDetailValue>{issues}</RepoDetailValue>
             </RepoDetailsListItem>
+            
             <RepoDetailsListItem>
               <RepoDetailsLabel>Último Commit: </RepoDetailsLabel>
-              <RepoDetailValue>{ lastCommit }</RepoDetailValue>
+              <RepoDetailValue>{lastCommit}</RepoDetailValue>
             </RepoDetailsListItem>
+          
           </RepoDetailsListScroll>
+
         </RepoDetailsContent>
       </RepoDetailsContainer>
+
+
     )
   }
 }
