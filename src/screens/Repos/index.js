@@ -35,7 +35,7 @@ export default class Repos extends Component {
     }
 
     async componentDidMount() {
-        const repos = JSON.parse(await AsyncStorage.getItem('@appFinanceiro:repos')) || [];
+        const repos = JSON.parse(await AsyncStorage.getItem('@gihubrepos:repos')) || [];
         this.setState({ repos });
     }
 
@@ -66,10 +66,7 @@ export default class Repos extends Component {
             modalVisible: false,
             repos: [...this.state.repos, repository]
         });
-
-        
-
-        await AsyncStorage.setItem('@appFinanceiro:repos', JSON.stringify(this.state.repos));
+        await AsyncStorage.setItem('@gihubrepos:repos', JSON.stringify(this.state.repos));
     }
 
     render() {
