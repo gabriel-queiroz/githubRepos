@@ -35,16 +35,19 @@ export default class RepoDetails extends Component {
   render() {
 
 
-    const { id, stars, title, avatar, author, forks, lastCommit, issues } = this.state.repo;
+    const { stars, title, avatar, author, forks, lastCommit, issues } = this.state.repo;
 
     return (
       <RepoDetailsContainer>
+        
         <StatusBar />
 
         <RepoDetailsHeader>
+          
           <RepoDetailsImage source={{ uri: avatar }} />
           <RepoDetailsTitle>{title}</RepoDetailsTitle>
           <RepoDetailsAuthor>{author}</RepoDetailsAuthor>
+        
         </RepoDetailsHeader>
 
         <RepoDetailsContent>
@@ -74,9 +77,8 @@ export default class RepoDetails extends Component {
           </RepoDetailsListScroll>
 
         </RepoDetailsContent>
+      
       </RepoDetailsContainer>
-
-
-    )
+    );
   }
 }
