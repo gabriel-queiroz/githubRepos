@@ -42,8 +42,12 @@ export const ButtonText = styled.Text`
     color:#FFF;
 `;
 
-export const ReposListScroll = styled.ScrollView`
-   padding:20px;
+export const ReposListScroll = styled.ScrollView.attrs({
+    contentContainerStyle:{
+        padding:20
+    }
+})
+`
 `;
 
 export const RepoListItem = styled.View`

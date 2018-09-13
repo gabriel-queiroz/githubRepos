@@ -9,13 +9,13 @@ export const RepoDetailsContainer = styled.View`
 `;
 
 export const RepoDetailsHeader = styled.View`
-    flex: 1;
+    flex: 1.5;
     justify-content: center;
     align-items: center;
     background-color: #FFF;
     border-radius: 5px;
     margin:10px 0px;
-    width: 80%;
+    width: 90%;
 `;
 
 export const RepoDetailsImage = styled.Image`
@@ -27,13 +27,21 @@ export const RepoDetailsImage = styled.Image`
 
 export const RepoDetailsTitle = styled.Text`
     font-size: 16px;
-    color:#CCC;
+    color:#222;
     font-weight: bold;
     margin-top: 10px;
 `;
 
+export const RepoDetailsDescription = styled.Text`
+    margin: 10px 5px;
+    font-size: 12px;
+    color:#CCC;
+    text-align:center;
+`;
+
 export const RepoDetailsAuthor = styled.Text`
     color: #CCC;
+    font-weight:bold;
     font-size: 12px;
 
 `;
@@ -43,12 +51,11 @@ export const RepoDetailsContent = styled.View`
     background-color:#FFF;
     width: 90%;
     border-radius: 5px;
+    margin-bottom:10px;
 `;
 
 export const RepoDetailsListScroll = styled.ScrollView`
      padding:15px;
-     flex:1;
-     margin-bottom: 10px;
 `;
 
 export const RepoDetailsListItem =  styled.View`
