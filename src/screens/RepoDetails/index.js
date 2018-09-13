@@ -9,7 +9,9 @@ import {
   RepoDetailsListScroll,
   RepoDetailsListItem,
   RepoDetailsLabel,
-  RepoDetailValue
+  RepoDetailValue,
+  RepoDetailsDescription
+
 } from './styles';
 import StatusBar from '../../components/StatusBar';
 
@@ -24,9 +26,9 @@ export default class RepoDetails extends Component {
   }
 
   componentDidMount() {
-    const { id, stars, title, avatar, author, forks, lastCommit, issues } = this.props.navigation.state.params;
+    const { id, stars, title, description, avatar, author, forks, lastCommit, issues } = this.props.navigation.state.params;
     const repo = {
-      id, stars, title, avatar, author, forks, lastCommit, issues
+      id, stars, description, title, avatar, author, forks, lastCommit, issues
     };
 
     this.setState({ repo });
@@ -35,7 +37,7 @@ export default class RepoDetails extends Component {
   render() {
 
 
-    const { stars, title, avatar, author, forks, lastCommit, issues } = this.state.repo;
+    const { stars, title, avatar, author, forks, lastCommit, issues, description } = this.state.repo;
 
     return (
       <RepoDetailsContainer>
@@ -47,7 +49,8 @@ export default class RepoDetails extends Component {
           <RepoDetailsImage source={{ uri: avatar }} />
           <RepoDetailsTitle>{title}</RepoDetailsTitle>
           <RepoDetailsAuthor>{author}</RepoDetailsAuthor>
-        
+          <RepoDetailsDescription>{ description }</RepoDetailsDescription>
+
         </RepoDetailsHeader>
 
         <RepoDetailsContent>

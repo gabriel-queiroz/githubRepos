@@ -52,13 +52,14 @@ export default class Repos extends Component {
         const response = await repoCall.json();
         const repository = {
             
-            id:         response.id,
-            avatar:     response.owner.avatar_url,
-            title:      response.name,
-            author:     response.owner.login,
-            stars:      response.stargazers_count,
-            forks:      response.forks_count,
-            issues:     response.open_issues_count,
+            id:          response.id,
+            description: response.description,
+            avatar:      response.owner.avatar_url,
+            title:       response.name,
+            author:      response.owner.login,
+            stars:       response.stargazers_count,
+            forks:       response.forks_count,
+            issues:      response.open_issues_count,
             lastCommit: moment(response.pushed_at).fromNow(),
 
         };
