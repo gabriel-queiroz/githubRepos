@@ -27,6 +27,7 @@ export default class Repos extends Component {
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleAddRepo = this.handleAddRepo.bind(this);
         this.handlePushPageDetails = this.handlePushPageDetails.bind(this);
+        this.handleDeleteRepo = this.handleDeleteRepo.bind(this);
     }
 
     handlePushPageDetails(repo) {
@@ -35,7 +36,7 @@ export default class Repos extends Component {
     }
 
     async componentDidMount() {
-        const repos = JSON.parse(await AsyncStorage.getItem('@gihubrepos:repos')) || [];
+        const repos = JSON.parse(await AsyncStorage.getItem('@githubrepos:repos')) || [];
         this.setState({ repos });
     }
 
@@ -61,17 +62,23 @@ export default class Repos extends Component {
             lastCommit: moment(response.pushed_at).fromNow(),
 
         };
-
         this.setState({
             modalVisible: false,
             repos: [...this.state.repos, repository]
         });
-        await AsyncStorage.setItem('@gihubrepos:repos', JSON.stringify(this.state.repos));
+        await AsyncStorage.setItem('@githubrepos:repos', JSON.stringify(this.state.repos));
+    }
+
+    async handleDeleteRepo(id){
+
+        const repos = JSON.parse(await AsyncStorage.getItem('@githubrepos:repos'));
+        const index = repos.findIndex(i => i.id === id );
+        repos.splice(index, 1);
+        this.setState({repos});
+        await AsyncStorage.setItem('@githubrepos:repos', JSON.stringify(repos)); 
     }
 
     render() {
-
-        console.log(console.log(this.state.repos));
 
         const { modalVisible, repos } = this.state;
 
@@ -89,6 +96,7 @@ export default class Repos extends Component {
                         <Repo 
                             key={repo.id} 
                             onPressRepo={this.handlePushPageDetails}
+                            onDeleteRepo={this.handleDeleteRepo}
                             data={repo} />
                     ))
                     }
