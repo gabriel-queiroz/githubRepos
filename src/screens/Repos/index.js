@@ -8,11 +8,18 @@ import {
     ButtonText,
     StatusBar
 }
+
     from './styles';
+
 import { AsyncStorage } from 'react-native';
 import Repo from '../../components/Repo';
-import moment from 'moment';
 import NewRepoModal from '../../components/NewRepoModal';
+
+import moment from 'moment';
+
+import { getRepoByPath } from '../../services/repos';
+
+import Spinner from 'react-native-loading-spinner-overlay';
 
 export default class Repos extends Component {
 
@@ -21,7 +28,8 @@ export default class Repos extends Component {
 
         this.state = {
             modalVisible: false,
-            repos: []
+            repos: [],
+            isLoading: false,
         }
         this.handleCloseModal = this.handleCloseModal.bind(this);
         this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -48,40 +56,51 @@ export default class Repos extends Component {
     }
 
     async handleAddRepo(newRepoText) {
-        const repoCall = await fetch(`http://api.github.com/repos/${newRepoText}`);
-        const response = await repoCall.json();
-        const repository = {
-            
-            id:          response.id,
-            description: response.description,
-            avatar:      response.owner.avatar_url,
-            title:       response.name,
-            author:      response.owner.login,
-            stars:       response.stargazers_count,
-            forks:       response.forks_count,
-            issues:      response.open_issues_count,
-            lastCommit: moment(response.pushed_at).fromNow(),
-
-        };
-        this.setState({
+        await this.setState({ 
+            isLoading: true,
             modalVisible: false,
-            repos: [...this.state.repos, repository]
         });
-        await AsyncStorage.setItem('@githubrepos:repos', JSON.stringify(this.state.repos));
+
+        try {
+
+            const repoCall = await getRepoByPath(newRepoText);
+            const { data } = repoCall;
+
+            const repository = {
+                id: data.id,
+                description: data.description,
+                avatar: data.owner.avatar_url,
+                title: data.name,
+                author: data.owner.login,
+                stars: data.stargazers_count,
+                forks: data.forks_count,
+                issues: data.open_issues_count,
+                lastCommit: moment(data.pushed_at).fromNow(),
+            };
+
+            await this.setState({
+                repos: [...this.state.repos, repository]
+            });
+            await this.setState({ isLoading: false });
+            await AsyncStorage.setItem('@githubrepos:repos', JSON.stringify(this.state.repos));
+
+        } catch (Error) {
+            this.setState({ isLoading: false });
+        }
     }
 
-    async handleDeleteRepo(id){
+    async handleDeleteRepo(id) {
 
         const repos = JSON.parse(await AsyncStorage.getItem('@githubrepos:repos'));
-        const index = repos.findIndex(i => i.id === id );
+        const index = repos.findIndex(i => i.id === id);
         repos.splice(index, 1);
-        this.setState({repos});
-        await AsyncStorage.setItem('@githubrepos:repos', JSON.stringify(repos)); 
+        this.setState({ repos });
+        await AsyncStorage.setItem('@githubrepos:repos', JSON.stringify(repos));
     }
 
     render() {
 
-        const { modalVisible, repos } = this.state;
+        const { modalVisible, repos, isLoading } = this.state;
 
         return (
             <Container>
@@ -93,9 +112,9 @@ export default class Repos extends Component {
                     </Button>
                 </Header>
                 <ReposListScroll>
-                    {repos.map((repo) => (
-                        <Repo 
-                            key={repo.id} 
+                    {repos.map(repo => (
+                        <Repo
+                            key={repo.id}
                             onPressRepo={this.handlePushPageDetails}
                             onDeleteRepo={this.handleDeleteRepo}
                             data={repo} />
@@ -106,6 +125,13 @@ export default class Repos extends Component {
                     visible={modalVisible}
                     onCloseModal={this.handleCloseModal}
                     onAddRepo={this.handleAddRepo}
+                />
+                <Spinner
+                    visible={isLoading}
+                    textContent="Carregando"
+                    textStyle={{ color: '#FFF' }}
+                    overlayColor="rgba(0, 0, 0, 0.9)"
+
                 />
             </Container>
         );
