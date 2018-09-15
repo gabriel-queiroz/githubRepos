@@ -20,7 +20,8 @@
     "babel-jest": "23.6.0",
     "babel-preset-react-native": "^5",
     "jest": "23.6.0",
-    "react-test-renderer": "16.4.1"
+    "react-test-renderer": "16.4.1",
+    "reactotron-react-native": "^2.1.0"
   },
   "jest": {
     "preset": "react-native"
