@@ -4,7 +4,7 @@ import PlatForm from 'react-native';
 export const Container = styled.View`
 
     flex: 1;
-    background-color: #046595;
+    background-color: #014668;
 `;
 
 export const StatusBar = styled.StatusBar.attrs({

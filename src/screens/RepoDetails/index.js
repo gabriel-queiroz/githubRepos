@@ -15,6 +15,8 @@ import {
 } from './styles';
 import StatusBar from '../../components/StatusBar';
 
+import ToolBar from '../../components/ToolBar';
+
 export default class RepoDetails extends Component {
 
   constructor(props) {
@@ -36,6 +38,7 @@ export default class RepoDetails extends Component {
 
   render() {
 
+    const { goBack } = this.props.navigation;
 
     const { stars, title, avatar, author, forks, lastCommit, issues, description } = this.state.repo;
 
@@ -43,6 +46,10 @@ export default class RepoDetails extends Component {
       <RepoDetailsContainer>
         
         <StatusBar />
+
+        <ToolBar
+          goBack={goBack}
+        />
 
         <RepoDetailsHeader>
           
