@@ -21,6 +21,7 @@ import { getRepoByPath } from '../../services/repos';
 
 import Spinner from 'react-native-loading-spinner-overlay';
 
+
 export default class Repos extends Component {
 
     constructor(props) {
@@ -37,7 +38,6 @@ export default class Repos extends Component {
         this.handlePushPageDetails = this.handlePushPageDetails.bind(this);
         this.handleDeleteRepo = this.handleDeleteRepo.bind(this);
     }
-
     handlePushPageDetails(repo) {
         const { navigate } = this.props.navigation;
         navigate('RepoDetails', repo);
@@ -56,7 +56,7 @@ export default class Repos extends Component {
     }
 
     async handleAddRepo(newRepoText) {
-        await this.setState({ 
+        await this.setState({
             isLoading: true,
             modalVisible: false,
         });
@@ -65,7 +65,7 @@ export default class Repos extends Component {
 
             const repoCall = await getRepoByPath(newRepoText);
             const { data } = repoCall;
-            
+
             const repository = {
                 id: data.id,
                 description: data.description,
@@ -106,9 +106,12 @@ export default class Repos extends Component {
             <Container>
                 <StatusBar />
                 <Header>
+                    <Button onPress={this.props.navigation.toggleDrawer} >
+                    
+                    </Button>
                     <Title>Github Repos</Title>
                     <Button onPress={this.handleOpenModal}>
-                        <ButtonText>+</ButtonText>
+                      
                     </Button>
                 </Header>
                 <ReposListScroll>

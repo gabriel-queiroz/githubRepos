@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import Routes from './src/routes';
 
+import './src/config/reactotronConfig';
 
-export default class App extends Component {
+ class App extends Component {
   render() {
     return (
       <Routes />
@@ -11,3 +12,4 @@ export default class App extends Component {
   }
 }
 
+export default console.tron.overlay(App);

@@ -10,10 +10,7 @@ export const Container = styled.View`
 export const StatusBar = styled.StatusBar.attrs({
     backgroundColor:'#014668'
 })
-`
-
-
-`;
+``;
 
 export const Title = styled.Text`
     color:#FFFFFF;
