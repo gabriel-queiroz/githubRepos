@@ -45,7 +45,7 @@ export default class Repo extends Component {
                     
                     <RepoInfo>
                         <RepoImage source={{ uri: avatar }} />
-                        
+
                         <RepoInfoData>
                             <RepoTitle>{title}</RepoTitle>
                             <RepoAuthor>{author}</RepoAuthor>

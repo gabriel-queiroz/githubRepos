@@ -18,7 +18,7 @@ import NewRepoModal from '../../components/NewRepoModal';
 import moment from 'moment';
 
 import { getRepoByPath } from '../../services/repos';
-
+import Icon from 'react-native-vector-icons/Feather';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 
@@ -83,7 +83,6 @@ export default class Repos extends Component {
             });
             await this.setState({ isLoading: false });
             await AsyncStorage.setItem('@githubrepos:repos', JSON.stringify(this.state.repos));
-
         } catch (Error) {
             this.setState({ isLoading: false });
         }
@@ -107,11 +106,11 @@ export default class Repos extends Component {
                 <StatusBar />
                 <Header>
                     <Button onPress={this.props.navigation.toggleDrawer} >
-                    
+                        <Icon name="menu" size={25} color="#FFF" />
                     </Button>
                     <Title>Github Repos</Title>
                     <Button onPress={this.handleOpenModal}>
-                      
+                        <Icon name="plus" size={25} color="#FFF"/>
                     </Button>
                 </Header>
                 <ReposListScroll>
