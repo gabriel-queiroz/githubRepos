@@ -49,6 +49,7 @@ export default class RepoDetails extends Component {
 
         <ToolBar
           goBack={goBack}
+          title="RepoDetails"
         />
 
         <RepoDetailsHeader>
