@@ -1,25 +1,26 @@
 import { createDrawerNavigator, DrawerItems } from 'react-navigation';
 import React from 'react';
-import { View, Text } from 'react-native';
+
 import Repos from '../screens/Repos';
 import RepoDetails from '../screens/RepoDetails';
+import Users from '../screens/Users';
+import SideMenu from '../components/SideMenu';
 
-const Routes = createDrawerNavigator({
+    
+    const Routes = createDrawerNavigator({
 
-    Repos: {
-        screen: Repos
-    },
-    RepoDetails: {
-        screen: RepoDetails
-    }
+        Repos: {
+            screen: Repos
+        },
+        RepoDetails: {
+            screen: RepoDetails
+        },
+        Users: {
+            screen: Users
+        }
 
-}, {
-        contentComponent: (props) => (
-            <View>
-                <Text>Menu Header</Text>
-                <DrawerItems {...props} />
-            </View >
-        )
-    });
+    }, {
+            contentComponent: SideMenu
+        });
 
 export default Routes;
