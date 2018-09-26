@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-
+import colors from '../../styles/colors';
 
 export const RepoContainer = styled.View`
-    background-color: #FFF;
+    background-color: ${ colors.white };
     margin-bottom: 20px;
     border-radius: 5px;
     flex:1;
@@ -22,9 +22,7 @@ export const RepoImage = styled.Image`
     border-radius: 25px;
 `;
 
-export const RepoButtonMenu = styled.TouchableOpacity`
-
-`;
+export const RepoButtonMenu = styled.TouchableOpacity``;
 
 export const RepoInfo = styled.View`
     margin-left: 10px;
@@ -32,18 +30,15 @@ export const RepoInfo = styled.View`
     justify-content: center;
     align-items: center;
 `;
-
 export const RepoInfoData = styled.View`
     margin-left:10px;
     justify-content:center;
 `;
-
 export const RepoTitle = styled.Text`
     font-weight: bold;
-    color:#333;
+    color:${ colors.third };
 `;
-
 export const RepoAuthor = styled.Text`
     font-size:12px;
-    color:#999;
+    color: ${ colors.fourth };
 `;

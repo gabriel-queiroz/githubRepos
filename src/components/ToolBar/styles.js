@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 export const ToolBarContainer = styled.View`
     height:10px;
@@ -7,7 +8,7 @@ export const ToolBarContainer = styled.View`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #0465;
+    background-color: ${ colors.second };
     width:100%;
 `;
 
@@ -17,7 +18,7 @@ export const ToolBarTouchable = styled.TouchableOpacity`
 `;
 
 export const ToolBarTitle = styled.Text`
-    color:#FFF;
+    color: ${ colors.white } ;
     align-self: center;
     font-size: 18px;
     flex:2;

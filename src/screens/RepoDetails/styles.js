@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-
+import colors from '../../styles/colors';
 
 export const RepoDetailsContainer = styled.View`
     flex: 1;
-    background-color: #046595;
+    background-color: ${ colors.primary };
     justify-content: center;
     align-items:center;
 `;
@@ -12,7 +12,7 @@ export const RepoDetailsHeader = styled.View`
     flex: 1.5;
     justify-content: center;
     align-items: center;
-    background-color: #FFF;
+    background-color: ${ colors.white };
     border-radius: 5px;
     margin:10px 0px;
     width: 90%;
@@ -27,7 +27,7 @@ export const RepoDetailsImage = styled.Image`
 
 export const RepoDetailsTitle = styled.Text`
     font-size: 16px;
-    color:#222;
+    color:${ colors.third };
     font-weight: bold;
     margin-top: 10px;
 `;
@@ -35,12 +35,12 @@ export const RepoDetailsTitle = styled.Text`
 export const RepoDetailsDescription = styled.Text`
     margin: 10px 5px;
     font-size: 12px;
-    color:#CCC;
+    color: ${ colors.fourth };
     text-align:center;
 `;
 
 export const RepoDetailsAuthor = styled.Text`
-    color: #CCC;
+    color: ${ colors.fourth };
     font-weight:bold;
     font-size: 12px;
 
@@ -48,7 +48,7 @@ export const RepoDetailsAuthor = styled.Text`
 
 export const RepoDetailsContent = styled.View`
     flex: 2;
-    background-color:#FFF;
+    background-color: ${ colors.white };
     width: 90%;
     border-radius: 5px;
     margin-bottom:10px;
@@ -63,17 +63,17 @@ export const RepoDetailsListItem =  styled.View`
     flex:1;
     flex-direction: row;
     justify-content: space-between;
-    background-color:#fff;
+    background-color:${ colors.white};
     border-bottom-width: 2px;
-    border-color:#ccc;
+    border-color: ${ colors.fourth };
 `;
 
 export const RepoDetailsLabel = styled.Text`
-    color:#222;
+    color:  ${ colors.third };
     font-weight: bold;
 
 `;
 
 export const RepoDetailValue = styled.Text`
-    color:#222;
+    color: ${ colors.third };
 `;

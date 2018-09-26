@@ -1,11 +1,11 @@
 import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 export const Modal = styled.Modal.attrs({
     animationType: 'slide',
     transparent: true
 })
-`  
-`;
+``;
 
 export const ModalContainer = styled.View`
     flex:1;
@@ -16,7 +16,7 @@ export const ModalContainer = styled.View`
 
 export const ModalContent =  styled.View`
     padding: 20px;
-    background-color:#046595;
+    background-color:${ colors.second };
     border-radius: 10px;
     align-items: center;
     justify-content:space-around;
@@ -27,7 +27,7 @@ export const ModalContent =  styled.View`
 export const ModalTitle = styled.Text`
     font-weight: bold;
     font-size: 16px;
-    color:#FFFFFF;
+    color: ${ colors.white };
 `;
 
 export const ModalInput = styled.TextInput.attrs({
@@ -40,9 +40,7 @@ export const ModalInput = styled.TextInput.attrs({
     padding: 0px 20px;
     border-radius: 3px;
     height: 40px;
-    border: 1px #ddd;
-    background-color:#FFFFFF;
-
+    background-color:${ colors.white };
 `;
 
 export const ModalButtonsContainer = styled.View`
@@ -50,9 +48,6 @@ export const ModalButtonsContainer = styled.View`
     flex-direction:row;
     height:50px;
     align-self:flex-end;
-   
-    
-
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -67,6 +62,6 @@ export const Button = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
     font-weight: bold;
-    color: #FFF;
+    color: ${ colors.white };
     font-size: 12px;
 `;
