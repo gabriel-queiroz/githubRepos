@@ -6,17 +6,23 @@ import RepoDetails from '../screens/RepoDetails';
 import Users from '../screens/Users';
 import SideMenu from '../components/SideMenu';
 
-    
+
     const Routes = createDrawerNavigator({
 
         Repos: {
             screen: Repos
         },
         RepoDetails: {
-            screen: RepoDetails
+            screen: RepoDetails,
+            navigationOptions: ({navigation}) => ({
+            drawerLockMode: 'locked-closed'
+          })
         },
         Users: {
-            screen: Users
+            screen: Users,
+            navigationOptions: ({navigation}) => ({
+            drawerLockMode: 'locked-closed'
+          })
         }
 
     }, {
